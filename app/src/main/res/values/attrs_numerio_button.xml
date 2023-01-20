@@ -1,0 +1,13 @@
+<resources>
+    <declare-styleable name="NumerioButton">
+        <attr name="firstText" format="string" />
+        <attr name="firstFunction" format="integer" />
+        <attr name="firstTextColor" format="color" />
+        <attr name="firstTextSize" format="dimension" />
+        <attr name="secondText" format="string" />
+        <attr name="secondFunction" format="integer" />
+        <attr name="secondTextColor" format="color" />
+        <attr name="secondTextSize" format="dimension" />
+        <attr name="buttonColor" format="string" />
+    </declare-styleable>
+</resources>

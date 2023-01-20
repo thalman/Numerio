@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name" translatable="false">Numerio</string>
+
+    <string name="menu_scientific">Scientific</string>
+</resources>

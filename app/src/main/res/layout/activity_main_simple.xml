@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calculatorSimple"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_600"
+    tools:context=".MainActivity">
+
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonSqrt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_sqrt"
+        app:firstText="√¯"
+        app:layout_constraintBottom_toTopOf="@+id/buttonResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMinus">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonPercent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_percentage"
+        app:firstText="%"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDivide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonMemPlus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_mem_plus"
+        app:firstText="M+"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMultiply"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/buttonMemClear">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonMemMinus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_mem_minus"
+        app:firstText="M-"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/buttonMemClear" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonMemClear"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_mem_clear"
+        app:firstText="MC"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCE" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonMemGet"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_mem_recall"
+        app:firstText="MR"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAC" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonCE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:buttonColor="red"
+        app:firstFunction="@integer/f_ce"
+        app:firstText="C"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMemClear"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalDisplayGuideline"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonAC"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:buttonColor="red"
+        app:firstFunction="@integer/f_ac"
+        app:firstText="AC"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMemGet"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horizontalDisplayGuideline"
+        app:layout_constraintVertical_chainStyle="spread">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonPow2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_pow2"
+        app:firstText="x²"
+        app:layout_constraintBottom_toTopOf="@+id/buttonResult"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlus" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:firstFunction="@integer/f_remove"
+        app:firstText="«"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPercent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/horizontalDisplayGuideline" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonResult"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:firstFunction="@integer/f_evaluate"
+        app:firstText="="
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPow2" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonMultiply"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_multiply"
+        app:firstText="×"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPlus"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMemPlus" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonDivide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_divide"
+        app:firstText="÷"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMinus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonMultiply"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPercent">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonMinus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_minus"
+        app:firstText="-"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSqrt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlus"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDivide">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonPlus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:firstFunction="@integer/f_plus"
+        app:firstText="+"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPow2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMultiply" />
+
+    <net.halman.numerio.NumerioDisplay
+        android:id="@+id/numerioDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_display_bg"
+        android:minHeight="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalDisplayGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonPlusMinus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_plus_minus"
+        app:firstText="+/-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/buttonDot"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_dot"
+        app:firstText="."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button0"
+        app:layout_constraintTop_toBottomOf="@+id/button8">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_1"
+        app:firstText="1"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMemGet">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_2"
+        app:firstText="2"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMemClear" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_3"
+        app:firstText="3"
+        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMemMinus">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_4"
+        app:firstText="4"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_7"
+        app:firstText="7"
+        app:layout_constraintBottom_toTopOf="@+id/button0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_0"
+        app:firstText="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_6"
+        app:firstText="6"
+        app:layout_constraintBottom_toTopOf="@+id/button9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_8"
+        app:firstText="8"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDot"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/button5">
+
+    </net.halman.numerio.NumerioButton>
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_9"
+        app:firstText="9"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDot"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <net.halman.numerio.NumerioButton
+        android:id="@+id/button5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:buttonColor="gray"
+        app:firstFunction="@integer/f_number_5"
+        app:firstText="5"
+        app:layout_constraintBottom_toTopOf="@+id/button8"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/button2">
+
+    </net.halman.numerio.NumerioButton>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalDisplayGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

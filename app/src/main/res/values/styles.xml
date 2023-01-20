@@ -1,0 +1,11 @@
+<resources>
+    <style name="ToolBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@android:color/holo_red_dark</item>
+        <item name="android:textColorSecondary">@android:color/holo_blue_bright</item>
+        <item name="actionMenuTextColor">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="Widget.Theme.Numerio.MyView" parent="">
+        <item name="android:background">@color/gray_400</item>
+    </style>
+</resources>

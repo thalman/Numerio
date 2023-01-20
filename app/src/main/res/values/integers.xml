@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="f_ac">1</integer>
+    <integer name="f_ce">2</integer>
+    <integer name="f_mem_clear">4</integer>
+    <integer name="f_mem_minus">5</integer>
+    <integer name="f_mem_plus">6</integer>
+    <integer name="f_mem_recall">7</integer>
+    <integer name="f_second_fn">8</integer>
+
+    <integer name="f_number_0">10</integer>
+    <integer name="f_number_1">11</integer>
+    <integer name="f_number_2">12</integer>
+    <integer name="f_number_3">13</integer>
+    <integer name="f_number_4">14</integer>
+    <integer name="f_number_5">15</integer>
+    <integer name="f_number_6">16</integer>
+    <integer name="f_number_7">17</integer>
+    <integer name="f_number_8">18</integer>
+    <integer name="f_number_9">19</integer>
+    <integer name="f_number_dot">20</integer>
+
+    <integer name="f_remove">30</integer>
+    <integer name="f_plus_minus">31</integer>
+    <integer name="f_plus">32</integer>
+    <integer name="f_minus">33</integer>
+    <integer name="f_divide">34</integer>
+    <integer name="f_multiply">35</integer>
+    <integer name="f_evaluate">36</integer>
+
+    <integer name="f_percentage">50</integer>
+    <integer name="f_sqrt">51</integer>
+    <integer name="f_cbrt">52</integer>
+    <integer name="f_pow2">53</integer>
+    <integer name="f_pow3">54</integer>
+
+    <integer name="f_drg">60</integer>
+    <integer name="f_to_drg">61</integer>
+    <integer name="f_sin">62</integer>
+    <integer name="f_cos">63</integer>
+    <integer name="f_tan">64</integer>
+    <integer name="f_asin">65</integer>
+    <integer name="f_acos">66</integer>
+    <integer name="f_atan">67</integer>
+
+    <integer name="f_pi">70</integer>
+    <integer name="f_invert">71</integer>
+    <integer name="f_factorial">72</integer>
+
+    <integer name="f_ln">80</integer>
+    <integer name="f_e_pow_x">81</integer>
+    <integer name="f_log">82</integer>
+    <integer name="f_10_pow_x">83</integer>
+    <integer name="f_pow_y">84</integer>
+    <integer name="f_root_y">85</integer>
+
+    <integer name="f_hyp">90</integer>
+    <integer name="f_arc_hyp">91</integer>
+    <integer name="f_sinh">92</integer>
+    <integer name="f_cosh">93</integer>
+    <integer name="f_tanh">94</integer>
+    <integer name="f_asinh">95</integer>
+    <integer name="f_acosh">96</integer>
+    <integer name="f_atanh">97</integer>
+
+    <integer name="f_exp">100</integer>
+    <integer name="f_eng">101</integer>
+    <integer name="f_parenthesis_opening">102</integer>
+    <integer name="f_parenthesis_closing">103</integer>
+    <integer name="f_to_dms">104</integer>
+    <integer name="f_from_dms">105</integer>
+</resources>
