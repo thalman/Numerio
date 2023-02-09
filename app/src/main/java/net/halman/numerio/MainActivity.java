@@ -7,6 +7,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private View mLayoutSimple = null;
     private View mLayoutScientific = null;
     private String mMode = "scientific";
+    private boolean mVibration = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_numerio, menu);
 
-        // show hide fingering for recorder
         MenuItem item = menu.findItem(R.id.actionScientific);
         item.setChecked(mMode.equals("scientific"));
+
+        item = menu.findItem(R.id.actionVibration);
+        item.setChecked(mVibration);
 
         return true;
     }
@@ -107,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 setMode("simple");
             }
+            saveState();
+            return true;
+        }
+
+        if (id == R.id.actionVibration) {
+            item.setChecked(! item.isChecked());
+
+            mVibration = item.isChecked();
             saveState();
             return true;
         }
@@ -132,6 +144,13 @@ public class MainActivity extends AppCompatActivity {
     private void onButtonClick(View view) {
         if (! (view instanceof NumerioButton)) {
             return;
+        }
+
+        if (mVibration) {
+            view.performHapticFeedback(
+                HapticFeedbackConstants.VIRTUAL_KEY,
+                HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING | HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING
+            );
         }
 
         NumerioButton button = (NumerioButton) view;
@@ -400,6 +419,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("mode", mMode);
+        editor.putBoolean("vibration", mVibration);
         if (mLayoutScientific != null) {
             NumerioDisplay nd = mLayoutScientific.findViewById(R.id.numerioDisplay);
             editor.putString("numberMode", nd.getNumberMode().name());
@@ -409,6 +429,7 @@ public class MainActivity extends AppCompatActivity {
 
     private  void loadState() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        mVibration = sharedPref.getBoolean("vibration", true);
         mMode = sharedPref.getString("mode", "simple");
         if (mLayoutScientific != null) {
             NumerioDisplay nd = mLayoutScientific.findViewById(R.id.numerioDisplay);
