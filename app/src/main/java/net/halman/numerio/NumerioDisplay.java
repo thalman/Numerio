@@ -232,6 +232,21 @@ public class NumerioDisplay extends View {
         }
     }
 
+    public String formatNumber() {
+        if (machine == null || machine.errorState()) {
+            return "";
+        }
+
+        switch (numberMode) {
+            case ENG:
+                return machine.lastNumber().toEngString();
+            case SCI:
+                return machine.lastNumber().toSciString();
+            default:
+                return machine.lastNumber().toString();
+        }
+    }
+
     private void drawNumber(Canvas canvas)
     {
         if (machine == null || machine.errorState()) return;
@@ -240,18 +255,7 @@ public class NumerioDisplay extends View {
         String base;
         String exp;
 
-        switch (numberMode) {
-            case ENG:
-                number = machine.lastNumber().toEngString();
-                break;
-            case SCI:
-                number = machine.lastNumber().toSciString();
-                break;
-            default:
-                number = machine.lastNumber().toString();
-                break;
-        }
-
+        number = formatNumber();
         int e = number.indexOf('e');
         if (e < 0) {
             base = number;

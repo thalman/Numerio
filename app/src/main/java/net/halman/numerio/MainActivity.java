@@ -2,6 +2,8 @@ package net.halman.numerio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -61,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 v.setOnClickListener(listener);
             }
         }
+
+        mLayoutSimple.findViewById(R.id.numerioDisplay).setOnClickListener(this::onDisplayClick);
+        mLayoutScientific.findViewById(R.id.numerioDisplay).setOnClickListener(this::onDisplayClick);
 
         setMode(mMode);
     }
@@ -371,6 +376,15 @@ public class MainActivity extends AppCompatActivity {
         numerioDisplay.invalidate();
     }
 
+    private void onDisplayClick(View view) {
+        if (numerioDisplay == null) {
+            return;
+        }
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("numerio", numerioDisplay.formatNumber());
+        clipboard.setPrimaryClip(clip);
+    }
 
     private  void saveState() {
         try {
