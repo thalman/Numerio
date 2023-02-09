@@ -187,6 +187,10 @@ public class NumerioMachine implements Serializable {
             return;
         }
 
+        if (p.opening() && parenthesisLevel() >= 5) {
+            return;
+        }
+
         if (last instanceof Operator && p.opening()) {
             stack.add(p);
             stack.add(new Number(0.0));
