@@ -10,8 +10,8 @@ android {
         applicationId "net.halman.numerio"
         minSdkVersion 16
         targetSdkVersion 32
-        versionCode 100
-        versionName "1.0"
+        versionCode 101
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
