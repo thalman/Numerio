@@ -465,13 +465,17 @@ public class Number implements Serializable {
 
     public void add(Number n) throws Exception {
         toCalculatingState();
-        value += n.get();
+        double result = value + n.get();
+        result = checkValue(result);
+        value = result;
         sanitize();
     }
 
     public void sub(Number n) throws Exception {
         toCalculatingState();
-        value = value - n.get();
+        double result = value - n.get();
+        result = checkValue(result);
+        value = result;
         sanitize();
     }
 
