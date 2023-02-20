@@ -131,11 +131,17 @@ public class MainActivity extends AppCompatActivity {
             mLayoutSimple.setVisibility(View.VISIBLE);
             mLayoutScientific.setVisibility(View.GONE);
             numerioDisplay = mLayoutSimple.findViewById(R.id.numerioDisplay);
+            if (machine != null) {
+                machine.setSmallNumbers(true);
+            }
         } else {
             mMode = "scientific";
             mLayoutScientific.setVisibility(View.VISIBLE);
             mLayoutSimple.setVisibility(View.GONE);
             numerioDisplay = mLayoutScientific.findViewById(R.id.numerioDisplay);
+            if (machine != null) {
+                machine.setSmallNumbers(false);
+            }
         }
         numerioDisplay.setMachine(machine);
         numerioDisplay.setMode(mMode);

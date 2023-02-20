@@ -13,19 +13,58 @@ public class NumerioMachine implements Serializable {
 
     private final ArrayList<Object> stack = new ArrayList<>();
     private State state = State.INPUT;
-    private Number memory = new Number(0);
+    private Number memory = null;
     private Number repeatNumber = null;
     private Operator repeatOperator = null;
     private Number.DRG drg = Number.DRG.DEG;
+    private boolean small_numbers = false;
 
     public NumerioMachine() {
         stack.clear();
-        stack.add(new Number());
+        stack.add(new Number(small_numbers));
+        memory = new Number(0, small_numbers);
     }
 
     public Number.DRG getDrg()
     {
         return drg;
+    }
+
+    public void setSmallNumbers(boolean small_numbers) {
+        this.small_numbers = small_numbers;
+        if (memory != null) {
+            memory.setSmallNumbers(small_numbers);
+            try {
+                memory.checkValue();
+            } catch (Exception ignored) {
+                memoryClear();
+            }
+        }
+        if (repeatNumber != null) {
+            repeatNumber.setSmallNumbers(small_numbers);
+            try {
+                repeatNumber.checkValue();
+            } catch (Exception ignored) {
+                clearRepetition();
+            }
+        }
+        for (int i = 0; i < stack.size(); i++) {
+            Object o = stack.get(i);
+            if (o instanceof Number) {
+                Number n = (Number) o;
+                n.setSmallNumbers(small_numbers);
+                try {
+                    n.checkValue();
+                } catch (Exception ignored) {
+                    ac();
+                    break;
+                }
+            }
+        }
+    }
+
+    public boolean getSmallNumbers() {
+        return small_numbers;
     }
 
     public void nextDrg()
@@ -109,7 +148,7 @@ public class NumerioMachine implements Serializable {
                 }
                 break;
             case OPERATOR:
-                stack.add(new Number(c));
+                stack.add(new Number(c, small_numbers));
                 state = State.INPUT;
                 break;
             case RESULT:
@@ -117,7 +156,7 @@ public class NumerioMachine implements Serializable {
                 if (! (o instanceof Number)) {
                     // This should not happen
                     stack.clear();
-                    stack.add(new Number(0));
+                    stack.add(new Number(0, small_numbers));
                     o = lastItem();
                 }
                 Number n = (Number) o;
@@ -193,7 +232,7 @@ public class NumerioMachine implements Serializable {
 
         if (last instanceof Operator && p.opening()) {
             stack.add(p);
-            stack.add(new Number(0.0));
+            stack.add(new Number(0.0, small_numbers));
             state = State.INPUT;
         }
 
@@ -295,7 +334,7 @@ public class NumerioMachine implements Serializable {
     public void ac()
     {
         stack.clear();
-        stack.add(new Number(0));
+        stack.add(new Number(0, small_numbers));
         state = State.INPUT;
         clearRepetition();
     }
@@ -398,7 +437,7 @@ public class NumerioMachine implements Serializable {
         }
         try {
             Number n = lastNumber();
-            n.pow(new Number(2.0));
+            n.pow(new Number(2.0, small_numbers));
             state = State.RESULT;
         } catch (Exception e) {
             state = State.ERROR;
@@ -413,7 +452,7 @@ public class NumerioMachine implements Serializable {
         }
         try {
             Number n = lastNumber();
-            n.pow(new Number(3.0));
+            n.pow(new Number(3.0, small_numbers));
             state = State.RESULT;
         } catch (Exception e) {
             state = State.ERROR;
@@ -433,7 +472,7 @@ public class NumerioMachine implements Serializable {
 
             if (size < 3) {
                 Number n = lastNumber();
-                n.div(new Number(100));
+                n.div(new Number(100, small_numbers));
                 state = State.RESULT;
                 return;
             }
@@ -448,14 +487,14 @@ public class NumerioMachine implements Serializable {
             if (op.priority() == 1) {
                 // operator +-
                 if (op.get() == '+') {
-                    n2.add(new Number(100));
+                    n2.add(new Number(100, small_numbers));
                     op.set('*');
                 } else {
-                    n2.mul(new Number(-1));
-                    n2.add(new Number(100));
+                    n2.mul(new Number(-1, small_numbers));
+                    n2.add(new Number(100, small_numbers));
                     op.set('*');
                 }
-                n2.div(new Number(100));
+                n2.div(new Number(100, small_numbers));
                 result = Number.operation(n1, op, n2);
                 n1.set(result);
                 removeLastItem();
@@ -464,7 +503,7 @@ public class NumerioMachine implements Serializable {
             } else
             if (op.priority() == 2) {
                 // operator */
-                n2.div(new Number(100));
+                n2.div(new Number(100, small_numbers));
                 result = Number.operation(n1, op, n2);
                 n1.set(result);
                 removeLastItem();
@@ -472,7 +511,7 @@ public class NumerioMachine implements Serializable {
                 state = State.RESULT;
             } else {
                 Number n = lastNumber();
-                n.div(new Number(100));
+                n.div(new Number(100, small_numbers));
                 state = State.RESULT;
             }
         } catch (Exception e) {
@@ -755,7 +794,7 @@ public class NumerioMachine implements Serializable {
     {
         if (state == State.ERROR) return;
         if (lastItem() instanceof Operator) {
-            stack.add(new Number());
+            stack.add(new Number(small_numbers));
         }
         try {
             Number n = lastNumber();

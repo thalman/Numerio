@@ -5,10 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 import java.util.Locale;
 
-import static java.lang.Double.NEGATIVE_INFINITY;
-import static java.lang.Double.NaN;
-import static java.lang.Double.POSITIVE_INFINITY;
-
 public class Number implements Serializable {
     private enum State {
         EDITING,
@@ -24,41 +20,44 @@ public class Number implements Serializable {
 
     private static final int MAX_DIGITS = 13;
     public static final double max_simple = Math.pow(10, MAX_DIGITS) - 1.0;
+    public static final double min_simple = Math.pow(10, - MAX_DIGITS - 1);
     public static final double max_exp = 9.9e+99d;
     public static final double min_exp = 1.0e-99d;
     public static final double ZERO_THRESHOLD = 1.0e-200d;
     private double value = 0.0;
     private String valueText = "0";
     private State state = State.CALCULATING;
+    private boolean small_numbers = false;
 
-    public Number()
+    public Number(boolean small_numbers)
     {
+        this.small_numbers = small_numbers;
         set(0);
     }
 
-    public Number(int value)
+    public Number(int value, boolean small_numbers)
     {
+        this.small_numbers = small_numbers;
+
         set(value);
     }
 
-    public Number(String value)
+    public Number(char value, boolean small_numbers)
     {
-        set(value);
-    }
-
-    public Number(char value)
-    {
+        this.small_numbers = small_numbers;
         set(0);
         append(value);
     }
 
-    public Number(double value)
+    public Number(double value, boolean small_numbers)
     {
+        this.small_numbers = small_numbers;
         set(value);
     }
 
     public Number(Number value)
     {
+        this.small_numbers = value.small_numbers;
         set(value.get());
     }
 
@@ -96,6 +95,14 @@ public class Number implements Serializable {
     {
         toCalculatingState();
         return value;
+    }
+
+    public boolean getSmallNumbers() {
+        return small_numbers;
+    }
+
+    public void setSmallNumbers(boolean small_numbers) {
+        this.small_numbers = small_numbers;
     }
 
     private void toEditingState()
@@ -427,15 +434,31 @@ public class Number implements Serializable {
         return result;
     }
 
+    public void checkValue() throws Exception {
+        if (state == State.CALCULATING) {
+            checkValue(value);
+        }
+    }
+
     private double checkValue(double x) throws Exception {
         if (Double.isNaN(x) || Double.isInfinite(x)) {
             throw new Exception("Out of range");
         }
-        if (x > max_exp || x < -max_exp) {
-            throw new Exception("Out of range");
-        }
-        if (Math.abs(x) < min_exp) {
-            x = 0;
+        if (small_numbers) {
+            if (Math.abs(x) > max_simple) {
+                throw new Exception("Out of range");
+            }
+            if (Math.abs(x) < min_simple) {
+                x = 0;
+            }
+
+        } else {
+            if (Math.abs(x) > max_exp) {
+                throw new Exception("Out of range");
+            }
+            if (Math.abs(x) < min_exp) {
+                x = 0;
+            }
         }
         return x;
     }

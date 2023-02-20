@@ -265,6 +265,10 @@ public class NumerioDisplay extends View {
             exp = number.substring(e + 1);
         }
 
+        if ((! exp.isEmpty()) && simleMode) {
+            drawError(canvas);
+            return;
+        }
         int position = display_numbers - boxedLength(base) - 1;
         int dotPosition = base.indexOf('.');
         if (dotPosition < 0) {
