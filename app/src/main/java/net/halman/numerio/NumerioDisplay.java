@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -216,7 +217,7 @@ public class NumerioDisplay extends View {
         int box_width = expArea.width() / 3;
         drawText(canvas,
                 "×10",
-                expArea.left, numbersArea.bottom, expArea.height() * 8 / 10);
+                expArea.left, numbersArea.bottom, expArea.height() * 8 / 10, false);
 
         Drawable d;
         for (int i = 0; i < exp.length(); i ++) {
@@ -291,11 +292,14 @@ public class NumerioDisplay extends View {
         drawExp(canvas, exp);
     }
 
-    private void drawText(Canvas canvas, String text, int x, int y, int size)
+    private void drawText(Canvas canvas, String text, int x, int y, int size, boolean bold)
     {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
+        if (bold) {
+            paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        }
         paint.setTextSize(size);
         canvas.drawText(text, x, y, paint);
     }
@@ -307,7 +311,7 @@ public class NumerioDisplay extends View {
         if (machine.lastItem() instanceof Operator) {
             int y = getHeight() * 3 / 4;
             int h = getHeight() / 4;
-            drawText(canvas, machine.lastOperator().toDisplayString(), 40, y, h);
+            drawText(canvas, machine.lastOperator().toDisplayString(), 40, y, h, false);
         }
     }
 
@@ -317,8 +321,8 @@ public class NumerioDisplay extends View {
         }
         if (machine.memoryIsSet()) {
             int y = getHeight() / 4 + 5;
-            int h = getHeight() / 4;
-            drawText(canvas, "M", 40, y, h);
+            int h = getHeight() / 6;
+            drawText(canvas, "M", 40, y, h, true);
         }
     }
 
@@ -328,7 +332,7 @@ public class NumerioDisplay extends View {
         if (secondFn) {
             int y = getHeight() / 4 + 5;
             int h = getHeight() / 6;
-            drawText(canvas, "2nd-f", getWidth() / 4, y, h);
+            drawText(canvas, "2nd-f", getWidth() / 4, y, h, false);
         }
     }
 
@@ -338,7 +342,7 @@ public class NumerioDisplay extends View {
         if (hyp || ahyp) {
             int y = getHeight() / 4 + 5;
             int h = getHeight() / 6;
-            drawText(canvas, hyp ? "HYP" : "AHYP", getWidth() * 3 / 8, y, h);
+            drawText(canvas, hyp ? "HYP" : "AHYP", getWidth() * 3 / 8, y, h, false);
         }
     }
 
@@ -361,7 +365,7 @@ public class NumerioDisplay extends View {
                 text = "GRAD";
                 break;
         }
-        drawText(canvas, text, getWidth() / 2, y, h);
+        drawText(canvas, text, getWidth() / 2, y, h, false);
     }
 
     private void drawNumberMode(Canvas canvas)
@@ -383,7 +387,7 @@ public class NumerioDisplay extends View {
                 text = "";
                 break;
         }
-        drawText(canvas, text, getWidth() * 5 / 8, y, h);
+        drawText(canvas, text, getWidth() * 5 / 8, y, h, false);
     }
 
     private void drawParenthesis(Canvas canvas)
@@ -398,7 +402,7 @@ public class NumerioDisplay extends View {
         for (int i = 0; i < level; i++) {
             text = "(" + text + ")";
         }
-        drawText(canvas, text, getWidth() * 6 / 8, y, h);
+        drawText(canvas, text, getWidth() * 6 / 8, y, h, true);
     }
 
     private void drawError(Canvas canvas)
