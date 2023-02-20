@@ -2,6 +2,8 @@
 
 Simple calculator for Android
 
+<img src="images/icon.png" style="width:3em">
+
 ## Security and privacy
 
 The application is not collecting nor using any personal data.
@@ -20,3 +22,9 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+## Screenshots
+
+
+<img src="images/screenshot_scientific.png" style="width:10em">
+<img src="images/screenshot_simple.png" style="width:10em">
