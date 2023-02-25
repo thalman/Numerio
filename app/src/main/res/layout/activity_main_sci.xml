@@ -40,7 +40,7 @@
         android:layout_height="0dp"
         app:firstFunction="@integer/f_second_fn"
         app:firstText="2nd f"
-        app:firstTextColor="@android:color/holo_orange_light"
+        app:firstTextColor="@color/yellow"
         app:layout_constraintBottom_toTopOf="@+id/buttonDeg"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.5"

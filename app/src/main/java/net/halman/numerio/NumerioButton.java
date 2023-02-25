@@ -63,7 +63,7 @@ public class NumerioButton extends LinearLayout {
                 } else if (attr == R.styleable.NumerioButton_firstTextColor) {
                     mFirstFunctionTextColor = a.getColor(attr, -1);
                 } else if (attr == R.styleable.NumerioButton_firstTextSize) {
-                    mFirstFunctionTextSize = a.getDimension(attr, -1);
+                    mFirstFunctionTextSize = a.getDimension(attr, getResources().getDimension(R.dimen.font_size));
                 } else if (attr == R.styleable.NumerioButton_secondText) {
                     mSecondFunctionText = a.getText(attr);
                 } else if (attr == R.styleable.NumerioButton_secondFunction) {
@@ -71,7 +71,7 @@ public class NumerioButton extends LinearLayout {
                 } else if (attr == R.styleable.NumerioButton_secondTextColor) {
                     mSecondFunctionTextColor = a.getColor(attr, -1);
                 } else if (attr == R.styleable.NumerioButton_secondTextSize) {
-                    mSecondFunctionTextSize = a.getDimension(attr, -1);
+                    mSecondFunctionTextSize = a.getDimension(attr, getResources().getDimension(R.dimen.font_size_small));
                 } else if (attr == R.styleable.NumerioButton_buttonColor) {
                     buttonColor = a.getText(attr);
                 }
