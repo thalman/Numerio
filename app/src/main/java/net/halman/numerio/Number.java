@@ -395,15 +395,33 @@ public class Number implements Serializable {
 
         if (needExponent) {
             result = String.format(Locale.ENGLISH, "%1.12e", x);
-            desiredLength = MAX_DIGITS + 1 + 4;
+            // there is always "." => + 1
+            desiredLength = MAX_DIGITS + 1;
             if (x < 0.0) {
                 // leading -
                 desiredLength += 1;
             }
-            while (result.length() > desiredLength) {
-                int e = result.indexOf('e');
-                result = result.substring(0, e - 1) + result.substring(e);
+            int e = result.indexOf('e');
+            String exp = result.substring(e);
+            String base = result.substring(0, e);
+
+            while (base.length() > desiredLength) {
+                base = base.substring(0, base.length() - 1);
             }
+
+            // remove trailing 0
+            if (base.indexOf('.') >= 0) {
+                while (base.charAt(base.length() - 1) == '0') {
+                    base = base.substring(0, base.length() - 1);
+                }
+            }
+
+            // remove trailing dot
+            if (base.endsWith(".")) {
+                base = base.substring(0, base.length() - 1);
+            }
+
+            result = base + exp;
         } else {
             result = String.format(Locale.ENGLISH, "%.15f", x);
             desiredLength = MAX_DIGITS;
